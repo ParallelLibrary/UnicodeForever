@@ -29,8 +29,27 @@ struct encoding_t
 {
     int src; /* source */
     int dst; /* destination */
-    int len; /* length */
+    int len; /* length */ /* I assume this can be a remainder length */
+
+    uint8_t ch; /* Characters? */ /* Code Point cp */
 };
 
+size_t ascii_encoding(int src, int dst);
+
+/* Linux and Mac uses this */
 size_t utf8_encoding(uint8_t src, uint8_t dst);
+
+/* Windows uses this */
+size_t utf16_encoding(uint16_t src, uint16_t dst);
+
+/* Linux uses this */
+size_t utf32_encoding(uint32_t src, uint32_t dst);
+
+/* Windows old applications use this */
+
+size_t ucs2_encoding(uint8_t src, uint8_t dst);
+
+/* UCS4? */
+
+size_t ucs4_encoding(uint16_t src, uint16_t dst);
 
