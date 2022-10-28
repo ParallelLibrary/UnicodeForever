@@ -10,11 +10,18 @@
 
 #define ASCII /* Win 95/98 ANSI text */
 
+#define UTF_7 /* Legacy */ /* mUTF-7? */
 #define UTF_8 /* BOM */ /* Microsoft recommends using UTF-8 */
 #define UTF_16BE /* BOM */
 #define UTF_16LE /* Windows uses this for text WIDECHARCTER */ /* BOM */
 #define UTF_32BE /* BOM */
 #define UTF_32LE /* BOM */
+#define UTF_EBCDIC /* BOM */ /* DD 73 66 73 */
+
+#define BOCU /* BOM */  /* FB EE 28 */
+#define SCSU /* BOM */ /* 0E FE FF */
+
+#define GB18030 /* Chinese Government Standard */ /* BOM */ /* 84 31 95 33 */
 
 #define UCS2_BE
 #define UCS2_LE
@@ -44,6 +51,12 @@ size_t utf16_encoding(uint16_t src, uint16_t dst);
 
 /* Linux uses this */
 size_t utf32_encoding(uint32_t src, uint32_t dst);
+
+size_t bocu_encoding(uint32_t src, uint32_t dst);
+
+size_t scsu_encoding(uint16_t src, uint16_t dst);
+
+size_t gb18030_encoding(uint16_t src, uint16_t dst);
 
 /* Windows old applications use this */
 
