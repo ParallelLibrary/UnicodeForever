@@ -11,8 +11,11 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
       {
       }
       ch = src;
+      if (ch < 0x80)
+      {
+      }
      }
-      src += 3;
+      src += 2;
       --len;
       return 0;
 }
