@@ -54,7 +54,7 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
 
     if (src < len)
     {
-     if (i[0] == 0xFE && i[2] == 0xFF)
+     if (i[0] == 0xFE && i[1] == 0xFF)
      {
        len++;
      }
