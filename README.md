@@ -1,2 +1,5 @@
 # UnicodeForever
-Work and Progress
+Status Beta
+
+Partial UTF-8 Support
+Partial UTF-16 Support
