@@ -37,7 +37,7 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
       {
             /* 11110xxx 10xxxxxx */
       }
-     };
+     }
     src += 4;
     len++;
 
@@ -78,11 +78,10 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
        {
            /* Low Surrogate */
        }
-
-       src += 4;
-       len++;
      }
     }
+    src += 4;
+    len++;
 
     return len;
 }
