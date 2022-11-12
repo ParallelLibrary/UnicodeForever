@@ -1,4 +1,4 @@
-#include "paralleltextencoding.h"
+#include "unicodeforever.h"
 
 size_t utf8_encoding(uint8_t src, uint8_t dst)
 {
