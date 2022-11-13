@@ -1,4 +1,4 @@
-#include "unicodeforever.h"
+#include "paralleltextencoding.h"
 
 size_t utf8_encoding(uint8_t src, uint8_t dst)
 {
@@ -46,17 +46,20 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     {
         return 0;
     }
+    len--;
 
     /* 007F */  /* 07FF */  /* FFFF */
     if ((ch & 0xc1) && (ch & 0xbf || ch & 0xe0) && (ch & 0x9f) && (ch & 0xbf || ch & 0xf0) && (ch & 0x8f) && (ch & 0xbf) && (ch & 0xbf || ch & 0xf8) && (ch & 0x87) && (ch & 0xbf) && (ch & 0xbf) && (ch & 0xbf))
     {
         return 0;
     }
+    len--;
 
     if ((ch & 0xc0) && (ch & 0x80 || ch & 0xe0) && (ch & 0x80) && (ch & 0x80 || ch & 0xf0) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80 || 0xf8) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80))
     {
         return 0;
     }
+    len--;
 
     /* Bad Continuation Bytes */
 
@@ -68,6 +71,7 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     {
         return 0;
     }
+    len--;
 
     /* Surrogates */
       if ((ch & 0xed) && (ch & 0xa0) && (ch & 0x80 || ch & 0xed) && (ch & 0xad) && (ch & 0xbf || ch & 0xed) && (ch & 0xae) && (ch & 0x80 || ch & 0xed) && (ch & 0xaf) && (ch & 0xbf || ch & 0xed) && (ch & 0xb0) && (ch & 0x80 || ch & 0xed) && (ch & 0xbe) && (ch & 0x80 || ch & 0xed) && (ch & 0xbf) && (ch & 0xbf))
@@ -122,13 +126,24 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
     return len;
 }
 
-size_t utf_strlen(const char* utf_len, int byte_len)
+size_t utf_strlen(const char* utf_len, size_t byte_len)
 {
-    int len;
-
+    int len = 0;
     size_t i;
+    size_t ch;
 
-    strlen(utf_len);
+    if (byte_len < 0)
+    {
+        byte_len = strlen(utf_len);
+    }
+
+    while(byte_len > 0)
+    {
+        i = utf8_encoding((size_t)utf_len, (size_t)&ch);
+    }
+    len++;
+    utf_len += i;
+    byte_len -= i;
 
     return len;
 }
