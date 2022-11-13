@@ -1,5 +1,5 @@
 # UnicodeForever
-Status Beta
+Status Pre-Release
 
-<p>Partial UTF-8 Support</p>
+<p>Near Complete UTF-8 Support</p>
 <p>Partial UTF-16 Support</p>
