@@ -25,7 +25,5 @@ size_t gb18030_encoding(uint16_t src, uint16_t dst);
 
 size_t ucs2_encoding(uint8_t src, uint8_t dst);
 
-int utfconsole_test(const char* text, const wchar_t* str);
-
 
 
