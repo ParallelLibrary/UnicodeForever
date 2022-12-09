@@ -7,6 +7,8 @@
 #include <stdint.h>
 #include <string.h>
 
+size_t ascii_to_unicode(const char* ascii);
+
 size_t utf_len(const char* utf_len, int byte_len);
 
 size_t ascii_encoding(int src, int dst);
@@ -24,6 +26,3 @@ size_t scsu_encoding(uint16_t src, uint16_t dst);
 size_t gb18030_encoding(uint16_t src, uint16_t dst);
 
 size_t ucs2_encoding(uint8_t src, uint8_t dst);
-
-
-
