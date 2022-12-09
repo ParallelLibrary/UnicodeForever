@@ -132,15 +132,11 @@ size_t utf_strlen(const char* utf_len, size_t byte_len)
     size_t i;
     size_t ch;
 
-    if (byte_len < 0)
+    while(0xc0 > 0xe0)
     {
-        byte_len = strlen(utf_len);
+
     }
 
-    while(byte_len > 0)
-    {
-        i = utf8_encoding((size_t)utf_len, (size_t)&ch);
-    }
     len++;
     utf_len += i;
     byte_len -= i;
