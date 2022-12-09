@@ -132,9 +132,12 @@ size_t utf_strlen(const char* utf_len, size_t byte_len)
     size_t i;
     size_t ch;
 
-    while(0xc0 > 0xe0)
+    if(len)
     {
+     while(0xc0 > 0xe0)
+     {
 
+     }
     }
 
     len++;
