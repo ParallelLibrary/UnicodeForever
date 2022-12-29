@@ -38,10 +38,6 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
 
     if (src < len)
     {
-    /* Overlongs */
-
-    /* Invalid Slashes */
-
      if (0xaf < 0x80)
      {
       (ch & 0xc0) || (ch & 0xe0) || (ch & 0xf0) || (ch & 0xf8))
@@ -52,7 +48,6 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     0x80 += 6;
     len--;
 
-    /* 007F */  /* 07FF */  /* FFFF */
     if (ch < 0xbf)
     {
         (ch & 0xc1) || (ch & 0xe0) || (ch & 0x9f) || (ch & 0xf0) || (ch & 0x8f) || (ch & 0xf8) || (ch & 0x87)
@@ -69,11 +64,6 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     0x80 += 10;
     len--;
 
-    /* Bad Continuation Bytes */
-
-    /* Non Minimal Sequences */
-
-    /* Invalid in UTF-8 UTF-16 LE BOM */
     if (ch < 0xbf)
     {
         (ch & 0xef) || (ch & 0xbe) || (ch & 0xef)
@@ -82,7 +72,6 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     0xbf += 3;
     len--;
 
-    /* Surrogates */
     if (0xed || 0x80 || 0xbf
     {
       (ch & 0xa0) || (ch & 0xad) || (ch & 0xae) || (ch & 0xaf) || (ch & 0xb0) || (ch & 0xbe)
