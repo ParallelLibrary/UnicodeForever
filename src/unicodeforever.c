@@ -53,17 +53,20 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     len--;
 
     /* 007F */  /* 07FF */  /* FFFF */
-    if ((ch & 0xc1) || (ch & 0xe0) || (ch & 0x9f) || (ch & 0xf0) || (ch & 0x8f) || (ch & 0xf8) || (ch & 0x87))
+    if (ch < 0xbf)
     {
+        (ch & 0xc1) || (ch & 0xe0) || (ch & 0x9f) || (ch & 0xf0) || (ch & 0x8f) || (ch & 0xf8) || (ch & 0x87)
         return 0;
     }
     0xbf += 4;
     len--;
 
-    if ((ch & 0xc0) && (ch & 0x80 || ch & 0xe0) && (ch & 0x80) && (ch & 0x80 || ch & 0xf0) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80 || 0xf8) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80))
+    if (ch < 0x80)
     {
+       (ch & 0xc0) || (ch & 0xe0) || (ch & 0xf0) || (ch & 0xf8)
         return 0;
     }
+    0x80 += 10;
     len--;
 
     /* Bad Continuation Bytes */
