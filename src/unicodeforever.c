@@ -74,20 +74,24 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
     /* Non Minimal Sequences */
 
     /* Invalid in UTF-8 UTF-16 LE BOM */
-
-    if ((ch & 0xef) && (ch & 0xbf) && (ch & 0xbe || ch & 0xef) && (ch & 0xbf) && (ch & 0xbf))
+    if (ch < 0xbf)
     {
+        (ch & 0xef) || (ch & 0xbe) || (ch & 0xef)
         return 0;
     }
+    0xbf += 3;
     len--;
 
     /* Surrogates */
-      if ((ch & 0xed) && (ch & 0xa0) && (ch & 0x80 || ch & 0xed) && (ch & 0xad) && (ch & 0xbf || ch & 0xed) && (ch & 0xae) && (ch & 0x80 || ch & 0xed) && (ch & 0xaf) && (ch & 0xbf || ch & 0xed) && (ch & 0xb0) && (ch & 0x80 || ch & 0xed) && (ch & 0xbe) && (ch & 0x80 || ch & 0xed) && (ch & 0xbf) && (ch & 0xbf))
-      {
+    if (0xed || 0x80 || 0xbf
+    {
+      (ch & 0xa0) || (ch & 0xad) || (ch & 0xae) || (ch & 0xaf) || (ch & 0xb0) || (ch & 0xbe)
           return 0;
-      }
-     }
-     len--;
+    }
+    0xed += 7;
+    0x80 += 4;
+    0xbf += 4;
+    len--;
 
     return len;
 }
