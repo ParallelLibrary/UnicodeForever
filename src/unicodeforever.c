@@ -42,10 +42,14 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
 
     /* Invalid Slashes */
 
-    if ((ch & 0xc0) && (ch & 0xaf || ch & 0xe0) && (ch & 0x80) && (ch & 0xaf || ch & 0xf0) && (ch & 0x80) && (ch & 0x80) && (ch & 0xaf || ch & 0xf8) && (ch & 0x80) && (ch & 0x80) && (ch & 0x80) && (ch & 0xaf))
-    {
+     if (0xaf < 0x80)
+     {
+      (ch & 0xc0) || (ch & 0xe0) || (ch & 0xf0) || (ch & 0xf8))
         return 0;
+     }
     }
+    0xaf += 4;
+    0x80 += 6;
     len--;
 
     /* 007F */  /* 07FF */  /* FFFF */
