@@ -126,6 +126,10 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
     return len;
 }
 
+size_t utf32_encoding(uint32_t src, uint32_t dst)
+{
+}
+
 size_t utf_strlen(const char* utf_len, size_t byte_len)
 {
     int len = 0;
