@@ -5,7 +5,7 @@ size_t utf8_encoding(uint8_t src, uint8_t dst)
       int len = 0;
       uint8_t ch;
 
-      uint8_t *i = &src;
+      uint8_t* i = &src;
       ch = src;
 
       /* BOM UTF-8*/
@@ -90,7 +90,7 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
     int len = 0;
     uint16_t ch;
 
-    uint16_t *i = &src;
+    uint16_t* i = &src;
     ch = src;
 
     if (src < len)
@@ -129,6 +129,19 @@ size_t utf16_encoding(uint16_t src, uint16_t dst)
 
 size_t utf32_encoding(uint32_t src, uint32_t dst)
 {
+  int len = 0;
+  uint32_t ch;
+
+  uint32_t* i = &src;
+  ch = src;
+
+  if (src < len)
+  {
+    if (i[0] == 0x00 && i[1] == 0x00 && i[2] == 0xFE && i[3] == 0xFF)
+    {
+     len++;
+    }
+  }
 }
 
 size_t utf_strlen(const char* utf_len, size_t byte_len)
