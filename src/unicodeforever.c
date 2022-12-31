@@ -141,6 +141,12 @@ size_t utf32_encoding(uint32_t src, uint32_t dst)
     {
      len++;
     }
+
+    if (0x100000 <= 0x10FFFF)
+    {
+
+    }
+    len++;
   }
 }
 
