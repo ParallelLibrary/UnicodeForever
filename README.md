@@ -1,5 +1,7 @@
 # UnicodeForever
-Status Pre-Release
+Status Full Release
 
-<p>Near Complete UTF-8 Support</p>
-<p>Partial UTF-16 Support</p>
+<p><b>Encoding</b></p>
+<p>Complete UTF-8 Support</p>
+<p>Complete UTF-16 Support</p>
+<p>Complete UTF-32 Support</p>
