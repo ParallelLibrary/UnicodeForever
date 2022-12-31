@@ -148,6 +148,8 @@ size_t utf32_encoding(uint32_t src, uint32_t dst)
     }
     len++;
   }
+
+  return len;
 }
 
 size_t utf_strlen(const char* utf_len, size_t byte_len)
